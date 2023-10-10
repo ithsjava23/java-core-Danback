@@ -72,21 +72,37 @@ public class Warehouse {
         return new ArrayList<>(products.values());
     }
 
-    public boolean getChangedProducts() {
-        return false;
+    public ArrayList<Object> getChangedProducts() {
+        // Implement logic to return the list of changed products
+        ArrayList<Object> objects = new ArrayList<>();
+        return objects; // Return an empty list for now
     }
+
+
 
     public boolean isEmpty() {
-        return false;
+        return products.isEmpty();
     }
 
-    public boolean getProductsBy(Category meat) {
-        return false;
+    public List<ProductRecord> getProductsBy(Category category) {
+        List<ProductRecord> result = new ArrayList<>();
+        for (ProductRecord product : products.values()) {
+            if (product.getCategory().equals(category)) {
+                result.add(product);
+            }
+        }
+        return result;
     }
 
-    public boolean getProductsGroupedByCategories() {
-        return false;
+    public Map<Category, List<ProductRecord>> getProductsGroupedByCategories() {
+        Map<Category, List<ProductRecord>> groupedProducts = new HashMap<>();
+        for (ProductRecord product : products.values()) {
+            Category category = product.getCategory();
+            groupedProducts.computeIfAbsent(category, k -> new ArrayList<>()).add(product);
+        }
+        return groupedProducts;
     }
+
 
 
 }
