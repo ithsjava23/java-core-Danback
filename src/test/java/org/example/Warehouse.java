@@ -9,6 +9,7 @@ public class Warehouse {
     private String name;
 
     private Warehouse(String name) {
+        this.name = name; // Set the name field
         this.products = new HashMap<>();
     }
 
@@ -22,13 +23,13 @@ public class Warehouse {
     public static Warehouse getInstance() {
         if (instance == null) {
             instance = new Warehouse("MyStore");
-        } else if (instance.getName() == null) {
-            instance.setName("MyStore");
         }
         return instance;
     }
 
-    private void setName(String myStore) {
+    // Add a getter method for the name
+    public String getName() {
+        return name;
     }
 
     public ProductRecord addProduct(UUID id, String name, Category category, BigDecimal price) {
@@ -92,8 +93,5 @@ public class Warehouse {
         return false;
     }
 
-    public String getName() {
-        return name;
-    }
 
 }
