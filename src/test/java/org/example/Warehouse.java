@@ -7,12 +7,10 @@ public class Warehouse {
     private static Warehouse instance;
     private final Map<UUID, ProductRecord> products;
 
-    // Privat konstruktor för att förhindra direkt skapande av Warehouse-objekt
     private Warehouse(String name) {
         this.products = new HashMap<>();
     }
 
-    // Metod för att skapa eller hämta en befintlig Warehouse-instans
     public static Warehouse getInstance(String name) {
         if (instance == null) {
             instance = new Warehouse(name);
@@ -27,7 +25,6 @@ public class Warehouse {
         return instance;
     }
 
-    // Metod för att lägga till en produkt i lagret
     public ProductRecord addProduct(UUID id, String name, Category category, BigDecimal price) {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Product name can't be null or empty.");
@@ -47,7 +44,7 @@ public class Warehouse {
         return productRecord;
     }
 
-    // Metod för att uppdatera priset på en produkt
+
     public void updateProductPrice(UUID id, BigDecimal newPrice) {
         if (!products.containsKey(id)) {
             throw new IllegalArgumentException("Product with that id doesn't exist.");
@@ -56,22 +53,18 @@ public class Warehouse {
         productRecord.setPrice(newPrice);
     }
 
-    // Metod för att hämta en produkt med ett visst ID
-    public List<ProductRecord> getProductById(UUID id) {
-        List<ProductRecord> product = (List<ProductRecord>) products.get(id);
-        return product != null ? Collections.singletonList((ProductRecord) product) : Collections.emptyList();
+    public Optional<ProductRecord> getProductById(UUID id) {
+        return Optional.ofNullable(products.get(id));
     }
 
-    // Metod för att hämta alla produkter
     public List<ProductRecord> getProducts() {
         return new ArrayList<>(products.values());
     }
 
     public ArrayList<Object> getChangedProducts() {
-        // Implement logic to return the list of changed products
         ArrayList<Object> objects;
         objects = new ArrayList<>();
-        return objects; // Return an empty list for now
+        return objects;
     }
 
 

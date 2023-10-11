@@ -32,7 +32,6 @@ public class Category {
     }
 
     private static String formatCategoryName(String categoryName) {
-        // Konvertera första bokstaven till versal och resten till gemener
         return categoryName.substring(0, 1).toUpperCase() + categoryName.substring(1).toLowerCase();
     }
 }

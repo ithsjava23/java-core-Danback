@@ -16,21 +16,11 @@ public class ProductRecord {
         this.price = price;
     }
 
-    public UUID getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
 
     public Category getCategory() {
         return category;
     }
 
-    public BigDecimal getPrice() {
-        return price;
-    }
 
     public void setPrice(BigDecimal price) {
         this.price = price;
