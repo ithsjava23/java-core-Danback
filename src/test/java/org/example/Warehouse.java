@@ -21,9 +21,14 @@ public class Warehouse {
 
     public static Warehouse getInstance() {
         if (instance == null) {
-            instance = new Warehouse("DefaultName");
+            instance = new Warehouse("MyStore");
+        } else if (instance.getName() == null) {
+            instance.setName("MyStore");
         }
         return instance;
+    }
+
+    private void setName(String myStore) {
     }
 
     public ProductRecord addProduct(UUID id, String name, Category category, BigDecimal price) {
