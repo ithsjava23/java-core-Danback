@@ -6,7 +6,7 @@ import java.util.*;
 public class Warehouse {
     private static Warehouse instance;
     private final Map<UUID, ProductRecord> products;
-
+    private String name;
 
     private Warehouse(String name) {
         this.products = new HashMap<>();
@@ -87,6 +87,8 @@ public class Warehouse {
         return false;
     }
 
-
+    public String getName() {
+        return name;
+    }
 
 }
