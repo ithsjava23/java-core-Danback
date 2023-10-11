@@ -259,5 +259,7 @@ class WarehouseTest {
             assertThat(warehouse.getProductsBy(Category.of("Meat")))
                     .containsOnly(addedProducts.get(2), addedProducts.get(3));
         }
+
+
     }
 }

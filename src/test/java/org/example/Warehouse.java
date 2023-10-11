@@ -1,20 +1,14 @@
 package org.example;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 public class Warehouse {
     private static Warehouse instance;
-    private String name;
-    private Map<UUID, ProductRecord> products;
+    private final Map<UUID, ProductRecord> products;
 
     // Privat konstruktor för att förhindra direkt skapande av Warehouse-objekt
     private Warehouse(String name) {
-        this.name = name;
         this.products = new HashMap<>();
     }
 
@@ -63,8 +57,9 @@ public class Warehouse {
     }
 
     // Metod för att hämta en produkt med ett visst ID
-    public ProductRecord getProductById(UUID id) {
-        return products.get(id);
+    public List<ProductRecord> getProductById(UUID id) {
+        List<ProductRecord> product = (List<ProductRecord>) products.get(id);
+        return product != null ? Collections.singletonList((ProductRecord) product) : Collections.emptyList();
     }
 
     // Metod för att hämta alla produkter
@@ -74,10 +69,10 @@ public class Warehouse {
 
     public ArrayList<Object> getChangedProducts() {
         // Implement logic to return the list of changed products
-        ArrayList<Object> objects = new ArrayList<>();
+        ArrayList<Object> objects;
+        objects = new ArrayList<>();
         return objects; // Return an empty list for now
     }
-
 
 
     public boolean isEmpty() {
@@ -94,15 +89,9 @@ public class Warehouse {
         return result;
     }
 
-    public Map<Category, List<ProductRecord>> getProductsGroupedByCategories() {
-        Map<Category, List<ProductRecord>> groupedProducts = new HashMap<>();
-        for (ProductRecord product : products.values()) {
-            Category category = product.getCategory();
-            groupedProducts.computeIfAbsent(category, k -> new ArrayList<>()).add(product);
-        }
-        return groupedProducts;
+    public boolean getProductsGroupedByCategories() {
+        return false;
     }
-
 
 
 }

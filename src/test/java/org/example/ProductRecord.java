@@ -57,4 +57,5 @@ public class ProductRecord {
     public BigDecimal price() {
         return price;
     }
+
 }
