@@ -86,5 +86,10 @@ public class Warehouse {
         return false;
     }
 
+    public String getName() {
+        String name = null;
+        return null;
+    }
+
 
 }
