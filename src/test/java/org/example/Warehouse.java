@@ -1,13 +1,12 @@
 package org.example;
-//daniel
-////
+
 import java.math.BigDecimal;
 import java.util.*;
 
 public class Warehouse {
     private static Warehouse instance;
     private final Map<UUID, ProductRecord> products;
-    private String name;
+
 
     private Warehouse(String name) {
         this.products = new HashMap<>();
@@ -35,7 +34,7 @@ public class Warehouse {
             throw new IllegalArgumentException("Category can't be null.");
         }
         if (id == null) {
-            id = UUID.randomUUID(); // Generera ett nytt UUID om id är null
+            id = UUID.randomUUID();
         }
         if (products.containsKey(id)) {
             throw new IllegalArgumentException("Product with that id already exists, use updateProduct for updates.");
@@ -88,8 +87,6 @@ public class Warehouse {
         return false;
     }
 
-    public String getName() {
-        return name;
-    }
+
 
 }
