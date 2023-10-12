@@ -6,7 +6,7 @@ import java.util.*;
 public class Warehouse {
     private static Warehouse instance;
     private final Map<UUID, ProductRecord> products;
-    private String name;
+    private final String name;
 
     private Warehouse(String name) {
         this.name = name; // Set the name field
@@ -88,13 +88,11 @@ public class Warehouse {
 
     public List<ProductRecord> getProductsBy(Category category) {
         List<ProductRecord> result = new ArrayList<>();
-
         for (ProductRecord product : products.values()) {
             if (product.getCategory().equals(category)) {
                 result.add(product);
             }
         }
-
         return result;
     }
 

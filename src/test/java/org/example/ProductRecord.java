@@ -5,7 +5,6 @@ import java.util.UUID;
 
 public class ProductRecord {
     private final UUID id;
-    private final String name;
     private final Category category;
     private BigDecimal price;
     private BigDecimal previousPrice;
@@ -13,7 +12,6 @@ public class ProductRecord {
 
     public ProductRecord(UUID id, String name, Category category, BigDecimal price) {
         this.id = id;
-        this.name = name;
         this.category = category;
         this.price = price;
         this.previousPrice = price; // Initialize previousPrice with the current price
