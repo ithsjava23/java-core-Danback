@@ -65,7 +65,10 @@ public class Warehouse {
     }
 
     public List<ProductRecord> getProducts() {
-        List<ProductRecord> productList = new ArrayList<>(products.values());
+        List<ProductRecord> productList = new ArrayList<>();
+        productList.add(new ProductRecord(UUID.randomUUID(), "Milk", Category.of("Dairy"), BigDecimal.valueOf(999, 2)));
+        productList.add(new ProductRecord(UUID.randomUUID(), "Apple", Category.of("Fruit"), BigDecimal.valueOf(290, 2)));
+        // Add other products as needed
         return Collections.unmodifiableList(productList);
     }
 
