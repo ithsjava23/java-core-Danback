@@ -36,12 +36,15 @@ public class Warehouse {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Product name can't be null or empty.");
         }
+
         if (category == null) {
-            throw new IllegalArgumentException("Category can't be null.");
+            category = Category.of("Uncategorized"); // Assign a default category if it's null
         }
+
         if (id == null) {
             id = UUID.randomUUID();
         }
+
         if (products.containsKey(id)) {
             throw new IllegalArgumentException("Product with that id already exists, use updateProduct for updates.");
         }
