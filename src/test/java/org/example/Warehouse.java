@@ -14,7 +14,7 @@ public class Warehouse {
     }
 
     public static Warehouse getInstance(String name) {
-        if (instance == null) {
+        if (instance == null || !instance.getName().equals(name)) {
             instance = new Warehouse(name);
         }
         return instance;
