@@ -8,7 +8,7 @@ public class Warehouse {
     private final Map<UUID, ProductRecord> products;
     private String name;
 
-    private Warehouse(String name) {
+    public Warehouse(String name) {
         this.name = name; // Set the name field
         this.products = new HashMap<>();
     }
