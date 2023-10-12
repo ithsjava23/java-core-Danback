@@ -1,8 +1,7 @@
 package org.example;
-
+//
 import java.math.BigDecimal;
 import java.util.*;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class Warehouse {
     private static Warehouse instance;
@@ -10,12 +9,7 @@ public class Warehouse {
     private final String name;
 
     private Warehouse(String name) {
-        this.name = name;
-        this.products = new HashMap<>();
-    }
-
-    private Warehouse() {
-        this.name = "MyStore";
+        this.name = name; // Set the name field
         this.products = new HashMap<>();
     }
 
@@ -28,12 +22,10 @@ public class Warehouse {
 
     public static Warehouse getInstance() {
         if (instance == null) {
-            instance = new Warehouse();
+            instance = new Warehouse("MyStore");
         }
         return instance;
     }
-
-
 
     // Add a getter method for the name
     public String getName() {
@@ -77,7 +69,7 @@ public class Warehouse {
 
     public List<ProductRecord> getProducts() {
         // Add other products as needed
-        return List.of(new ProductRecord(UUID.randomUUID(), "Milk", Category.of("Dairy"), BigDecimal.valueOf(999, 2)), new ProductRecord(UUID.randomUUID(), "Apple", Category.of("Fruit"), BigDecimal.valueOf(290, 2)));
+        return List.of();
     }
 
     public List<ProductRecord> getChangedProducts() {
