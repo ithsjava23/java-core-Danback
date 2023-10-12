@@ -100,9 +100,14 @@ public class Warehouse {
         return result;
     }
 
-    public boolean getProductsGroupedByCategories() {
-        return false;
+    public Map<Category, List<ProductRecord>> getProductsGroupedByCategories() {
+        Map<Category, List<ProductRecord>> groupedProducts = new HashMap<>();
+
+        for (ProductRecord product : products.values()) {
+            Category category = product.getCategory();
+            groupedProducts.computeIfAbsent(category, k -> new ArrayList<>()).add(product);
+        }
+
+        return groupedProducts;
     }
-
-
 }
