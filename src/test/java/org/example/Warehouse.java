@@ -65,8 +65,7 @@ public class Warehouse {
     }
 
     public List<ProductRecord> getProducts() {
-        // Add other products as needed
-        return List.of(new ProductRecord(UUID.randomUUID(), "Milk", Category.of("Dairy"), BigDecimal.valueOf(999, 2)), new ProductRecord(UUID.randomUUID(), "Apple", Category.of("Fruit"), BigDecimal.valueOf(290, 2)));
+        return new ArrayList<>(products.values()); // Return a copy of the added products
     }
 
     public List<ProductRecord> getChangedProducts() {
