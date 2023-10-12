@@ -14,12 +14,14 @@ public class Warehouse {
     }
 
     public static Warehouse getInstance(String name) {
-        if (instance == null || !instance.getName().equals(name)) {
+        if (instance == null) {
             instance = new Warehouse(name);
         }
         return instance;
     }
 
+
+    //
     public static Warehouse getInstance() {
         if (instance == null) {
             instance = new Warehouse("MyStore");
@@ -27,7 +29,6 @@ public class Warehouse {
         return instance;
     }
 
-    // Add a getter method for the name
     public String getName() {
         return name;
     }
