@@ -24,7 +24,7 @@ public class ProductRecord {
 
     public void setPrice(BigDecimal price) {
         this.previousPrice = this.price; // Update previousPrice before changing the price
-        this.price = price;
+        this.price = (price != null) ? price : BigDecimal.ZERO; // Set the price to 0 if it's null
     }
 
     public UUID uuid() {
