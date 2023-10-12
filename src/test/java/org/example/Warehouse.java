@@ -69,10 +69,16 @@ public class Warehouse {
         return Collections.unmodifiableList(productList);
     }
 
-    public ArrayList<Object> getChangedProducts() {
-        ArrayList<Object> objects;
-        objects = new ArrayList<>();
-        return objects;
+    public List<ProductRecord> getChangedProducts() {
+        List<ProductRecord> changedProducts = new ArrayList<>();
+
+        for (ProductRecord product : products.values()) {
+            if (product.hasChanged()) { // You need to define the "hasChanged" method in your ProductRecord class.
+                changedProducts.add(product);
+            }
+        }
+
+        return Collections.unmodifiableList(changedProducts);
     }
 
 

@@ -48,4 +48,7 @@ public class ProductRecord {
         return price;
     }
 
+    public boolean hasChanged() {
+        return false;
+    }
 }
