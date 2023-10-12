@@ -27,7 +27,6 @@ public class Warehouse {
         return instance;
     }
 
-    // Add a getter method for the name
     public String getName() {
         return name;
     }
@@ -38,7 +37,7 @@ public class Warehouse {
         }
 
         if (category == null) {
-            category = Category.of("Uncategorized"); // Assign a default category if it's null
+            category = Category.of("Uncategorized");
         }
 
         if (id == null) {
@@ -54,7 +53,6 @@ public class Warehouse {
         return productRecord;
     }
 
-
     public void updateProductPrice(UUID id, BigDecimal newPrice) {
         if (!products.containsKey(id)) {
             throw new IllegalArgumentException("Product with that id doesn't exist.");
@@ -68,22 +66,20 @@ public class Warehouse {
     }
 
     public List<ProductRecord> getProducts() {
-        // Add other products as needed
-        return List.of(new ProductRecord(UUID.randomUUID(), "Milk", Category.of("Dairy"), BigDecimal.valueOf(999, 2)), new ProductRecord(UUID.randomUUID(), "Apple", Category.of("Fruit"), BigDecimal.valueOf(290, 2)));
+        return new ArrayList<>(products.values());
     }
 
     public List<ProductRecord> getChangedProducts() {
         List<ProductRecord> changedProducts = new ArrayList<>();
 
         for (ProductRecord product : products.values()) {
-            if (product.hasChanged()) { // You need to define the "hasChanged" method in your ProductRecord class.
+            if (product.hasChanged()) {
                 changedProducts.add(product);
             }
         }
 
         return Collections.unmodifiableList(changedProducts);
     }
-
 
     public boolean isEmpty() {
         return products.isEmpty();
@@ -99,9 +95,14 @@ public class Warehouse {
         return result;
     }
 
-    public boolean getProductsGroupedByCategories() {
-        return false;
+    public Map<Category, List<ProductRecord>> getProductsGroupedByCategories() {
+        Map<Category, List<ProductRecord>> groupedProducts = new HashMap<>();
+
+        for (ProductRecord product : products.values()) {
+            Category category = product.getCategory();
+            groupedProducts.computeIfAbsent(category, k -> new ArrayList<>()).add(product);
+        }
+
+        return groupedProducts;
     }
-
-
 }
