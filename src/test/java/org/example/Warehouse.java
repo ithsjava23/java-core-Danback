@@ -88,11 +88,13 @@ public class Warehouse {
 
     public List<ProductRecord> getProductsBy(Category category) {
         List<ProductRecord> result = new ArrayList<>();
+
         for (ProductRecord product : products.values()) {
             if (product.getCategory().equals(category)) {
                 result.add(product);
             }
         }
+
         return result;
     }
 
