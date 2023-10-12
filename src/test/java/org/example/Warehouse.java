@@ -92,7 +92,7 @@ public class Warehouse {
     public List<ProductRecord> getProductsBy(Category category) {
         List<ProductRecord> result = new ArrayList<>();
         for (ProductRecord product : products.values()) {
-            if (product.getCategory().equals(category)) {
+            if (category.equals(product.getCategory())) {
                 result.add(product);
             }
         }
