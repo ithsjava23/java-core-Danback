@@ -1,5 +1,4 @@
 package org.example;
-import java.util.stream.Collectors;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -91,9 +90,13 @@ public class Warehouse {
     }
 
     public List<ProductRecord> getProductsBy(Category category) {
-        return products.values().stream()
-                .filter(product -> category.equals(product.getCategory()))
-                .collect(Collectors.toList());
+        List<ProductRecord> result = new ArrayList<>();
+        for (ProductRecord product : products.values()) {
+            if (product.getCategory().equals(category)) {
+                result.add(product);
+            }
+        }
+        return result;
     }
 
     public boolean getProductsGroupedByCategories() {
