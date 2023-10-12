@@ -8,7 +8,8 @@ public class ProductRecord {
     private final String name;
     private final Category category;
     private BigDecimal price;
-    private BigDecimal previousPrice; // Store the previous price
+    private BigDecimal previousPrice;
+    private boolean hasChanged; // Add a boolean flag to track changes
 
     public ProductRecord(UUID id, String name, Category category, BigDecimal price) {
         this.id = id;
@@ -16,6 +17,7 @@ public class ProductRecord {
         this.category = category;
         this.price = price;
         this.previousPrice = price; // Initialize previousPrice with the current price
+        this.hasChanged = false; // Initialize to false
     }
 
     public Category getCategory() {
@@ -23,8 +25,9 @@ public class ProductRecord {
     }
 
     public void setPrice(BigDecimal price) {
-        this.previousPrice = this.price; // Update previousPrice before changing the price
-        this.price = (price != null) ? price : BigDecimal.ZERO; // Set the price to 0 if it's null
+        this.previousPrice = this.price;
+        this.price = (price != null) ? price : BigDecimal.ZERO;
+        this.hasChanged = !this.price.equals(previousPrice); // Check for changes
     }
 
     public UUID uuid() {
@@ -36,13 +39,14 @@ public class ProductRecord {
     }
 
     public boolean hasChanged() {
-        return !price.equals(previousPrice); // Check if the current price is different from the previous price
+        return hasChanged; // Return the change status
     }
 
     public Category category() {
         return null;
     }
 }
+
 
 
 
