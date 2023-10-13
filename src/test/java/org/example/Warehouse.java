@@ -61,7 +61,8 @@ public class Warehouse {
     }
 
     public List<ProductRecord> getProducts() {
-        return new ArrayList<>(products.values());
+        List<ProductRecord> productList = new ArrayList<>(products.values());
+        return Collections.unmodifiableList(productList);
     }
 
     public List<ProductRecord> getChangedProducts() {
