@@ -90,7 +90,4 @@ public class Warehouse {
         return groupedProducts;
     }
 
-    public List<ProductRecord> getAllProducts() {
-        return getProducts();
-    }
 }
