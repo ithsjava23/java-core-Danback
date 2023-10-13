@@ -14,8 +14,8 @@ public class ProductRecord {
         this.id = id;
         this.category = category;
         this.price = price;
-        this.previousPrice = price; // Initialize previousPrice with the current price
-        this.hasChanged = false; // Initialize to false
+        this.previousPrice = price;
+        this.hasChanged = false;
     }
 
     public Category getCategory() {

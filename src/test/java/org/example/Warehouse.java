@@ -9,24 +9,16 @@ public class Warehouse {
     private final String name;
 
     private Warehouse(String name) {
-        this.name = name; // Set the name field
+        this.name = name;
         this.products = new HashMap<>();
     }
 
     public static Warehouse getInstance(String name) {
-        if (instance == null) {
-            instance = new Warehouse(name);
-        }
-        return instance;
+        return new Warehouse(name);
     }
 
-
-    //
     public static Warehouse getInstance() {
-        if (instance == null) {
-            instance = new Warehouse("MyStore");
-        }
-        return instance;
+        return new Warehouse("");
     }
 
     public String getName() {
@@ -44,7 +36,7 @@ public class Warehouse {
             id = UUID.randomUUID();
         }
         if (price == null) {
-            price = BigDecimal.ZERO; // Set price to 0 if it's null
+            price = BigDecimal.ZERO;
         }
         if (products.containsKey(id)) {
             throw new IllegalArgumentException("Product with that id already exists, use updateProduct for updates.");
@@ -53,9 +45,7 @@ public class Warehouse {
         ProductRecord productRecord = new ProductRecord(id, name, category, price);
         products.put(id, productRecord);
         return productRecord;
-
     }
-
 
     public void updateProductPrice(UUID id, BigDecimal newPrice) {
         if (!products.containsKey(id)) {
@@ -70,22 +60,19 @@ public class Warehouse {
     }
 
     public List<ProductRecord> getProducts() {
-        // Add other products as needed
-        return List.of();
+    //
+        return Collections.emptyList();
     }
 
     public List<ProductRecord> getChangedProducts() {
         List<ProductRecord> changedProducts = new ArrayList<>();
-
         for (ProductRecord product : products.values()) {
-            if (product.hasChanged()) { // You need to define the "hasChanged" method in your ProductRecord class.
+            if (product.hasChanged()) {
                 changedProducts.add(product);
             }
         }
-
         return Collections.unmodifiableList(changedProducts);
     }
-
 
     public boolean isEmpty() {
         return products.isEmpty();
@@ -103,12 +90,10 @@ public class Warehouse {
 
     public Map<Category, List<ProductRecord>> getProductsGroupedByCategories() {
         Map<Category, List<ProductRecord>> groupedProducts = new HashMap<>();
-
         for (ProductRecord product : products.values()) {
             Category category = product.getCategory();
             groupedProducts.computeIfAbsent(category, k -> new ArrayList<>()).add(product);
         }
-
         return groupedProducts;
     }
 }
