@@ -16,6 +16,11 @@ public class ProductRecord {
         this.price = price;
         this.previousPrice = price; // Initialize previousPrice with the current price
         this.hasChanged = false; // Initialize to false
+        System.out.println("Adding product: " + name); // Lägg till denna utskrift
+
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Product name can't be null or empty.");
+        }
     }
 
     public Category getCategory() {
