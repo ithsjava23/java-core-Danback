@@ -11,7 +11,7 @@ public class Warehouse {
 
     private Warehouse(String name) {
         this.name = name;
-        this.products = new HashMap<>();
+        this.products = new LinkedHashMap<>();
     }
 
     public static Warehouse getInstance(String name) {
