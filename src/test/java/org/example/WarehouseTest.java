@@ -1,8 +1,5 @@
 package org.example;
 
-import org.example.warehouse.Category;
-import org.example.warehouse.ProductRecord;
-import org.example.warehouse.Warehouse;
 import org.junit.jupiter.api.*;
 
 import java.lang.reflect.Constructor;
@@ -12,9 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 @DisplayName("A warehouse")
@@ -262,5 +259,7 @@ class WarehouseTest {
             assertThat(warehouse.getProductsBy(Category.of("Meat")))
                     .containsOnly(addedProducts.get(2), addedProducts.get(3));
         }
+
+
     }
 }
