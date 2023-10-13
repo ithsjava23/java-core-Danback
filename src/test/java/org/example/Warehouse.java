@@ -33,12 +33,6 @@ public class Warehouse {
         return name;
     }
 
-    public static Warehouse createWithProduct(String name, UUID id, String productName, Category category, BigDecimal price) {
-        Warehouse warehouse = new Warehouse(name);
-        warehouse.addProduct(id, productName, category, price);
-        return warehouse;
-    }
-
     public ProductRecord addProduct(UUID id, String name, Category category, BigDecimal price) {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Product name can't be null or empty.");
