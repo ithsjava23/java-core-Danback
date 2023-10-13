@@ -1,7 +1,8 @@
 package org.example;
-//
+
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Warehouse {
     private static Warehouse instance;
@@ -60,18 +61,13 @@ public class Warehouse {
     }
 
     public List<ProductRecord> getProducts() {
-    //
-        return Collections.emptyList();
+        return new ArrayList<>(products.values());
     }
 
     public List<ProductRecord> getChangedProducts() {
-        List<ProductRecord> changedProducts = new ArrayList<>();
-        for (ProductRecord product : products.values()) {
-            if (product.hasChanged()) {
-                changedProducts.add(product);
-            }
-        }
-        return Collections.unmodifiableList(changedProducts);
+        return products.values().stream()
+                .filter(ProductRecord::hasChanged)
+                .collect(Collectors.toList());
     }
 
     public boolean isEmpty() {
@@ -79,13 +75,9 @@ public class Warehouse {
     }
 
     public List<ProductRecord> getProductsBy(Category category) {
-        List<ProductRecord> result = new ArrayList<>();
-        for (ProductRecord product : products.values()) {
-            if (product.getCategory().equals(category)) {
-                result.add(product);
-            }
-        }
-        return result;
+        return products.values().stream()
+                .filter(product -> product.getCategory().equals(category))
+                .collect(Collectors.toList());
     }
 
     public Map<Category, List<ProductRecord>> getProductsGroupedByCategories() {
